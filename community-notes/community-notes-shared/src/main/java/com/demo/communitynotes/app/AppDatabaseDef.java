@@ -9,6 +9,8 @@ import com.darwino.commons.json.JsonException;
 import com.darwino.commons.util.StringUtil;
 import com.darwino.jsonstore.impl.DatabaseFactoryImpl;
 import com.darwino.jsonstore.meta._Database;
+import com.darwino.jsonstore.meta._FtSearch;
+import com.darwino.jsonstore.meta._Store;
 
 /**
  * Database Definition.
@@ -17,7 +19,7 @@ import com.darwino.jsonstore.meta._Database;
  */
 public class AppDatabaseDef extends DatabaseFactoryImpl {
 
-	public static final int DATABASE_VERSION	= 1;
+	public static final int DATABASE_VERSION	= 2;
 	public static final String DATABASE_NAME	= "communitynotes";
 	
 	// The list  of instances is defined through a property for the DB
@@ -64,15 +66,15 @@ public class AppDatabaseDef extends DatabaseFactoryImpl {
 //		}
 
 		// Store...
-//		{
-//			_Store store = db.addStore("MyStore");
-//			store.setLabel("My Store");
-//			store.setFtSearchEnabled(true);
-//			
-//			// Search the whole document (all fields)
-//			_FtSearch ft = (_FtSearch) store.setFTSearch(new _FtSearch());
-//			ft.setFields("$");
-//		}
+		{
+			_Store store = db.addStore("notes");
+			store.setLabel("Notes");
+			store.setFtSearchEnabled(true);
+			
+			// Search the whole document (all fields)
+			_FtSearch ft = (_FtSearch) store.setFTSearch(new _FtSearch());
+			ft.setFields("$");
+		}
 
 		return db;
 	}
