@@ -2,10 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
+import {actions, getData} from './core/core-actions';
 import thunk from 'redux-thunk';
 import './bootstrap/dist/css/bootstrap.css';
 import './bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
+import './dropzone.min.css';
 
 /*
   React Tap Plugin for Tap events on mobile
@@ -35,7 +37,17 @@ let store = createStoreWithMiddleware(indexReducerWrapper,
 	window.devToolsExtension ? window.devToolsExtension() : undefined
 )
 
-//store.dispatch({type: 'OPEN_NOTE'});
+getData()
+.then(function (response) {
+  if(response.data.result.success){
+    console.log("success");
+    // dispatch(updateData(response.data.result.data));
+  }
+})
+.catch(function (error) {
+  console.log(error);
+  return null;
+});
 
 ReactDOM.render(
   <Provider store={store}>

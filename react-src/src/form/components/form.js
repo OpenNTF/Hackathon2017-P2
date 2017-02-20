@@ -1,5 +1,6 @@
 import React from 'react';
-
+import DropzoneComponent from 'react-dropzone-component';
+import globals from '../../globals';
 /*
 	Custom Components Import
 */
@@ -11,6 +12,11 @@ class Form extends React.Component {
 		};
 
     this.onClick = this.onClick.bind(this);
+		this.onAttachmentUploaded = this.onAttachmentUploaded.bind(this);
+	}
+
+	onAttachmentUploaded(file, res){
+
 	}
 
 	onClick(){
@@ -18,9 +24,31 @@ class Form extends React.Component {
 	}
 
 	render() {
+		var djsConfig = {
+			addRemoveLinks: true,
+//			acceptedFiles: ".xls,.xlsx",
+			maxFilesize:10,//10MB
+			maxFiles:1,
+//			headers:{"Authorization": localStorage.getItem('token')},
+			dictDefaultMessage:"Click here or drop file to upload"
+		};
+
+		var config = {
+			postUrl: globals.dropzoneUrl
+		};
+
+		var eventHandlers = {
+			success: this.onAttachmentUploaded
+		}
+
   	return (
 	  <div>
       <h2>I am a Form</h2>
+			<DropzoneComponent
+				config={config}
+				eventHandlers={eventHandlers}
+				djsConfig={djsConfig}
+			/>			
 			<button
 				type="button"
 				className="btn btn-warning"
