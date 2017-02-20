@@ -1,0 +1,66 @@
+// main: bootstrap.less
+
+@brand-primary:                    #4178be;
+@navbar-default-bg:                @body-bg;
+@nav-tabs-border-color:            @body-bg;
+@navbar-default-border:            @brand-primary;
+@navbar-default-link-active-bg:    transparent; //        darken(@navbar-default-bg, 6.5%);
+@navbar-default-link-active-color: @text-color; //        #555;
+
+
+
+@import "custom/card-layout.less";
+
+
+.navbar.navbar-default {
+    border-radius: 0;
+    border-color: @body-bg;
+    border-bottom-color: @brand-primary;
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+        .navbar-collapse {
+            @media (min-width: @screen-md) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        .nav.nav-tabs li {
+            text-transform: uppercase;
+            a {
+                border-width: 0 0 3px 0;
+                border-color: transparent;
+            }
+            &:hover a {
+                border-width: 0 0 3px 0;
+                border-color: @gray;
+                font-weight: normal;
+            }
+            &.active a {
+                border-width: 0 0 3px 0;
+                border-color: @brand-primary;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.flex-row {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    &:before {
+        display: block;
+    }
+}
+
+.flex-col {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
