@@ -1,0 +1,116 @@
+// main: ../bootstrap.less
+
+.content-type {    
+    border-style: solid; border-width: 0 40px 40px 0; float:right; height: 0px; width: 0px;
+    -ms-transform:rotate(360deg); /* IE 9 */
+    -o-transform: rotate(360deg);  /* Opera 10.5 */
+    -webkit-transform:rotate(360deg); /* Safari and Chrome */
+    transform:rotate(360deg);
+}
+
+.note {
+    min-height:300px;
+    width: 100%;
+    height:auto;
+    background:#fff; border:1px solid @gray-light; margin: 15px 0; overflow:hidden;
+}
+
+
+.note-content {
+    padding:0 20px 10px;
+
+    h3, p, .note-tags, .note-task-list, img {
+        margin: 10px 0 0;
+    }
+
+    p {
+        padding-top: 3px;
+    }
+
+    .note-task-list {
+        .list-unstyled;
+        li {
+            position: relative;
+            margin-left: 20px;
+            line-height: 1.5;
+            &:before {
+                .glyphicon;
+                top: 2px;
+                left: -20px;
+                position: absolute;
+            }
+            .glyphicon-unchecked;
+            &.done {
+                .glyphicon-check; 
+            }
+        }
+    }
+
+    .note-tags {
+        .clearfix;
+        .list-unstyled;
+        li {
+            float: left;
+            padding: 2px 7px;
+            border-radius: @border-radius-base;
+            margin: 0 2px 2px 0;
+            background-color: @gray-lighter;
+        }
+    }
+}
+
+.note-color(@rating, @colorcode) {
+    .note-@{rating} {
+        border-color: @colorcode; 
+        .content-type{
+            border-color: transparent @colorcode transparent transparent;
+            border-color: rgba(255,255,255,0) @colorcode rgba(255,255,255,0) rgba(255,255,255,0);
+        }
+    }
+}
+
+.note-new {
+    a {
+        display: block;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        .glyphicon;
+        .glyphicon-plus;
+        text-align: center;
+        &:before {
+            position: absolute;
+            display: block;
+            top: 50%;
+            left: 50%;
+            width: 64px;
+            height: 64px;
+            margin: -32px  0 0 -32px;
+            border: 3px solid @gray-lighter;
+            border-radius: 50%;
+            font-size: 50px;
+            text-align: center;
+            padding: 4px 4px 5px 5px;
+            color: @gray-lighter;
+            .transition(all 0.4s);
+        }
+
+        &:hover {
+            &:before {
+                color: @brand-primary;
+                border-color: @brand-primary;
+            }
+        }
+
+    }
+}
+
+.note-color(new, @gray-lighter);
+.note-color(default, @gray);
+.note-color(danger, @brand-danger);
+.note-color(warning, @brand-warning);
+.note-color(success, @brand-success);
+.note-color(primary, @brand-primary);
+.note-color(info, @brand-info);
+
+
