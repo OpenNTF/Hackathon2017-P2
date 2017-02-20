@@ -1,0 +1,177 @@
+<beans>
+    <!-- ================================================================================================== -->
+    <!-- Database access -->
+    <!-- ================================================================================================== -->
+    <bean type="darwino/jsondb" name="postgresql" class="com.darwino.config.jsonstore.JsonDbJdbc" alias="demo,default">
+        <property name="db">postgresql</property>    
+        <property name="user">admin</property>    
+        <property name="password">XCFNEKKUZRXIKCWG</property>    
+        <property name="url">jdbc:postgresql://sl-us-dal-9-portal.0.dblayer.com:20028/compose</property>     
+    </bean>
+    
+    <bean type="darwino/ibmconnections" name="cloudc1-trilog" class="com.darwino.ibm.connections.IbmConnections" alias="demo,default">
+        <property name="url">https://apps.na.collabserv.com/</property>    
+        <property name="trustAllSSLCertificates">true</property>    
+        <bean name="oauthCredentials">
+            <property name="consumerKey">app_23184014_1487626390655</property>    
+            <property name="consumerSecret">c261cd722ab208096a768d379b406a3a2861eb9e6018b07e962bb947d463ae162b3f6508b38538f44fdb39bfa5e63c495400fb0ad0c1c95cd53d51d47fa3fea366ce070285bbccaaebd8cc656d867b6f7aa1f95867ef325288b5de9f31c451a6b4a8cac78bf8f5da2b8bdbfb68f1b90fb8af64974e665abbe6e3a68978144aad</property>    
+        </bean>
+    </bean>
+    
+    <bean type="darwino/userdir" name="base" class="com.darwino.ibm.connections.IbmConnectionsUserDir" alias="demo,default">
+        <property name='allowUnknownUsers'>true</property>
+    </bean>
+ 
+    <!-- ================================================================================================== -->
+    <!-- Watson services for the discdb -->
+    <!-- ================================================================================================== -->
+<!--    
+    <bean type="ibmwatson/language_translation" name="discdb" class="com.darwino.ibm.watson.LanguageTranslationFactory">
+        <property name="user">2051edb6-e038-4bad-85ac-496ef88da8fc</property>    
+        <property name="password">kTQpaLphZds6</property>    
+    </bean>
+    <bean type="ibmwatson/tone_analyzer" name="discdb" class="com.darwino.ibm.watson.ToneAnalyzerFactory">
+        <property name="url">https://gateway.watsonplatform.net/tone-analyzer/api</property>    
+        <property name="user">e2a325c6-79f1-4b49-894d-4ed6f3d17c41</property>    
+        <property name="password">Z68vqvSQr84a</property>    
+    </bean>
+-->
+
+    <!-- ================================================================================================== -->
+    <!-- Static directory of users users -->
+    <!-- ================================================================================================== -->
+
+    <property name="uc">com.darwino.config.user.UserDirStatic$User</property>
+    <bean type="darwino/userdir" name="base" class="com.darwino.config.user.UserDirStatic" alias="demo,default">
+        <property name='allowUnknownUsers'>true</property>
+        <list name="providers">
+        </list>
+        <list name="users">
+            <bean class='${uc}'>
+                <property name='dn'>cn=Philippe Riand,o=TRILOG</property>
+                <property name='cn'>Philippe Riand</property>
+                <property name='uid'>phil</property>
+                <property name='email'>phil@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+                <list name='roles'>
+                    <value>admin</value>
+                </list>
+                <list name='groups'>
+                    <value>darwino</value>
+                </list>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=jesse,o=darwino</property>
+                <property name='cn'>Jesse</property>
+                <property name='uid'>jesse</property>
+                <property name='email'>jesse@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+                <list name='roles'>
+                    <value>admin</value>
+                </list>
+                <list name='groups'>
+                    <value>darwino</value>
+                </list>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=adam tinov,o=triloggroup</property>
+                <property name='cn'>Adam Tinov</property>
+                <property name='uid'>atinov</property>
+                <property name='email'>atinov@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=al mass,o=triloggroup</property>
+                <property name='cn'>Al Mass</property>
+                <property name='uid'>amass</property>
+                <property name='email'>amass@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=alain boucher,o=triloggroup</property>
+                <property name='cn'>Alain Boucher</property>
+                <property name='uid'>aboucher</property>
+                <property name='email'>aboucher@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=amanda calder,o=triloggroup</property>
+                <property name='cn'>Amanda Calder</property>
+                <property name='uid'>acalder</property>
+                <property name='email'>acalder@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=ava gardner,o=triloggroup</property>
+                <property name='cn'>Ava Gardner</property>
+                <property name='uid'>agardner</property>
+                <property name='email'>agardner@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=bernard chapot,o=triloggroup</property>
+                <property name='cn'>Bernard Chapot</property>
+                <property name='uid'>bchapot</property>
+                <property name='email'>bchapot@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=bernard lemercier,o=triloggroup</property>
+                <property name='cn'>Bernard Lemercier</property>
+                <property name='uid'>blemercier</property>
+                <property name='email'>blemercier@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=betty chris,o=triloggroup</property>
+                <property name='cn'>Betty Chris</property>
+                <property name='uid'>bchris</property>
+                <property name='email'>bchris@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=bill bright,o=triloggroup</property>
+                <property name='cn'>Bill Bright</property>
+                <property name='uid'>bbright</property>
+                <property name='email'>bbright@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=lauren armatti,o=triloggroup</property>
+                <property name='cn'>Lauren Armatti</property>
+                <property name='uid'>larmatti</property>
+                <property name='email'>larmatti@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=leon bros,o=triloggroup</property>
+                <property name='cn'>Leon Bros</property>
+                <property name='uid'>lbros</property>
+                <property name='email'>lbros@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=mary davis,o=triloggroup</property>
+                <property name='cn'>Mary Davis</property>
+                <property name='uid'>mdavis</property>
+                <property name='email'>mdavis@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=philip collins,o=triloggroup</property>
+                <property name='cn'>Philip Collins</property>
+                <property name='uid'>pcollins</property>
+                <property name='email'>pcollins@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=ralf jordan,o=triloggroup</property>
+                <property name='cn'>Ralf Jordan</property>
+                <property name='uid'>rjordan</property>
+                <property name='email'>rjordan@darwinoplayground.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+        </list>    
+    </bean>
+
+</beans>
