@@ -3,9 +3,9 @@ import {actions} from './listing-actions';
 
 const listing = (state = listingState, action) => {
   switch (action.type) {
-    case actions.TEST:
+    case actions.GET_DATA:
       return Object.assign({}, state, {
-          data:[]
+          data:action.data
       });
     default:
       return state

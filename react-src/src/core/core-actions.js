@@ -24,6 +24,5 @@ export const closeNote = () => {
 }
 
 export const getData = () => {
-    console.log("running get data 2");
-    return executeService("get", globals.serviceTypes.create);
+    return executeService("get", globals.serviceTypes.get);
 }

@@ -6,7 +6,8 @@ import validate from 'validate.js';
 import _ from 'lodash';
 
 export const actions = {
-  OPEN_NOTE: 'OPEN_NOTE'
+  OPEN_NOTE: 'OPEN_NOTE',
+  GET_DATA:'GET_DATA'
 }
 
 export const openNote = () => {

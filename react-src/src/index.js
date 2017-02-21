@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import {actions, getData} from './core/core-actions';
+import {getData} from './core/core-actions';
+import {actions} from './listing/listing-actions';
 import thunk from 'redux-thunk';
-import './bootstrap/dist/css/bootstrap.css';
-import './bootstrap/dist/css/bootstrap-theme.css';
+import './bootstrap/dist/css/connection-notes.css';
 import './index.css';
 import './dropzone.min.css';
 
@@ -39,10 +39,7 @@ let store = createStoreWithMiddleware(indexReducerWrapper,
 
 getData()
 .then(function (response) {
-  if(response.data.result.success){
-    console.log("success");
-    // dispatch(updateData(response.data.result.data));
-  }
+    store.dispatch({type: actions.GET_DATA, data:response.data});
 })
 .catch(function (error) {
   console.log(error);

@@ -2,10 +2,11 @@ let hostName = location.hostname;
 let protocol = location.protocol;
 
 let connectionsUrl = protocol + "//" + hostName + ":6010";
-let apiUrl = "http://localhost:8080/communitynotes/$darwino-jstore/databases/communitynotes/stores/notes/";
+//let apiUrl = "http://localhost:8080/communitynotes/$darwino-jstore/databases/communitynotes/stores/notes/";
+let apiUrl = "/communitynotes/$darwino-jstore/databases/communitynotes/stores/notes/";
 
 let serviceTypes = {
-  create:"create",
+  get:"get",
   save:"save"
 };
 

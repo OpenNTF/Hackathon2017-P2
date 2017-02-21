@@ -6,6 +6,8 @@ export const toProperCase = (str) => {
 }
 
 export const executeService= (reqType, serviceType) => {
+  console.log("Req Type = " + reqType);
+  console.log("Service Type = " + serviceType);
   var config = {};
 
   let url = globals.apiUrl;
@@ -26,12 +28,15 @@ export const executeService= (reqType, serviceType) => {
   }
 
   switch (serviceType) {
-    case globals.serviceTypes.create:
-      url += "documents/content";
+    case globals.serviceTypes.get:
+      url += "docentries";
       break;
     default:
 
   }
+
+    console.log(url);
+    console.log(config);
 
   return axios.get(url, config);
 }
